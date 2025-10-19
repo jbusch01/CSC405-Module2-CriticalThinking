@@ -6,7 +6,7 @@ function vec2(x, y) {
 
 function mix(a, b, t) {
     // linear interpolation: a*(1-t) + b*t
-    return [ (1 - t) * a[0], (1 - t) * a[1] + t * b[1] ];
+    return [ (1 - t) * a[0] + t * b[0], (1 - t) * a[1] + t * b[1] ];
 }
 
 function flatten(arr) {
@@ -64,9 +64,9 @@ window.onload = function init() {
 
     // Define vertices for a triangle
     const vertices = [
-        vec2(-1, -1),
-        vec2(0, 1),
-        vec2(1, -1)
+        vec2(-0.8660254, -0.5), // (-sqt3/2, -1/2)
+        vec2(0.8660254, -0.5),
+        vec2(0.0, 0.8660354)
 
     ];
 
