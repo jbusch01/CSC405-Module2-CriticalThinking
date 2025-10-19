@@ -6,7 +6,10 @@ let points = [];
 window.onload = function init() {
     const canvas = document.getElementById("gl-canvas");
     gl = WebGLUtils.setupWebGL(canvas);
-    if (!gl) this.alert("WebGL isn't available");
+    if (!gl) {
+        alert("WebGL isn't available");
+        return;
+    }
 
     // Define vertices for a triangle
     const vertices = [
@@ -20,7 +23,7 @@ window.onload = function init() {
     divideTriangle(vertices[0], vertices[1], vertices[2], 5);
 
     // Configure WebGL
-    gl.viewport(0, 0, canvas.clientWidth, canvas.height);
+    gl.viewport(0, 0, canvas.width, canvas.height);
     gl.clearColor(1.0, 1.0, 1.0, 1.0);
 
     // Load and use shaders
@@ -40,6 +43,7 @@ window.onload = function init() {
     render();
 };
 
+// Recursive trianglke subdivision
 function divideTriangle(a, b, c, count) {
     if (count === 0) {
         points.push(a, b, c);
