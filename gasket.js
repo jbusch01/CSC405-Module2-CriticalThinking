@@ -13,6 +13,7 @@ window.onload = function init() {
         vec2(-1, -1),
         vec2(0, 1),
         vec2(1, -1)
+
     ];
 
     // Subdivide the triangle (higher numbers = more detail)
@@ -28,22 +29,22 @@ window.onload = function init() {
 
     // Load data into GPU
     const bufferId = gl.createBuffer();
-    glbindBuffer(gl.ARRAY_BUFFER, bufferId);
+    gl.bindBuffer(gl.ARRAY_BUFFER, bufferId);
     gl.bufferData(gl.ARRAY_BUFFER, flatten(points), gl.STATIC_DRAW);
 
     // Associate shader variable with buffer data
     const vPosition = gl.getAttribLocation(program, "vPosition");
-    gl.vertexAttribArray(vPosition);
+    gl.vertexAttribPointer(vPosition, 2, gl.FLOAT, false, 0, 0);
     gl.enableVertexAttribArray(vPosition);
 
-    WebGL2RenderingContext();
+    render();
 };
 
 function divideTriangle(a, b, c, count) {
     if (count === 0) {
         points.push(a, b, c);
     } else {
-        const ab = mex (a, b, 0.5);
+        const ab = mix (a, b, 0.5);
         const ac = mix(a, c, 0.5);
         const bc = mix(b, c, 0.5);
         --count;
@@ -56,5 +57,5 @@ function divideTriangle(a, b, c, count) {
 
 function render() {
     gl.clear(gl.COLOR_BUFFER_BIT);
-    gl.drawArrays(gl.TRIAQNGLES, 0, points.length);
+    gl.drawArrays(gl.TRIANGLES, 0, points.length);
 }
