@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sierpinksi Gasket (WebGL)</title>
+    <title>Sierpinski Gasket (WebGL)</title>
     <script src="https://unpkg.com/webgl-utils@1.0.0/webgl-utils.js"></script>
     <script src="https://unpkg.com/init-shaders@1.0.0/initShaders.js"></script>
     <script src="https://unpkg.com/mv.js@0.1.0/mv.js"></script>
@@ -12,9 +12,19 @@
         Oops ... your browser doesn't support the HTML5 canvas element.
     </canvas>
 
-    <!-- Include shaders -->
-    <div id="shader-scripts"></div>
-    <script src="shaders.html" type="text/html"></script>
+    <script id="vertex-shader" type="x-shader/x-vertex">
+        attribute vec4 vPosition;
+        void main() {
+            gl_Position = vPosition;
+        }
+    </script>
+
+    <script id="fragment-shader" type="x-shader/x-fragment">
+        precision mediump float;
+        void main() {
+            gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
+        }
+    </script>
 
     <!-- Include main program -->
      <script src="gasket.js"></script>
