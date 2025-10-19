@@ -55,7 +55,7 @@ function divideTriangle(a, b, c, count) {
 
         divideTriangle(a, ab, ac, count);
         divideTriangle(c, ac, bc, count);
-        divideTriangle(b, c, ab, count);
+        divideTriangle(b, bc, ab, count);
     }
 }
 
