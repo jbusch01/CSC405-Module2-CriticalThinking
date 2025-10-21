@@ -66,7 +66,7 @@ window.onload = function init() {
     const vertices = [
         vec2(-0.8660254, -0.5), // (-sqt3/2, -1/2)
         vec2(0.8660254, -0.5),
-        vec2(0.0, 0.8660354)
+        vec2(0.0, 0.8660254)
 
     ];
 
