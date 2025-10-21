@@ -98,7 +98,7 @@ window.onload = function init() {
     render();
 };
 
-// Recursive trianglke subdivision
+// Recursive triangle subdivision
 function divideTriangle(a, b, c, count) {
     if (count === 0) {
         points.push(a, b, c);
